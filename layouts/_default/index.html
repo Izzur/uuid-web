@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UUID GENERATOR</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+    <style>
+      html,
+      body,
+      section {
+        height: 100%;
+        padding: 2em;
+        background: #263238;
+      }
+      section {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+      }
+      h1 {
+        text-align: center;
+        color: #eceff1;
+      }
+      .large {
+        background: #006064;
+        border: 0;
+        font-size: 3rem;
+        height: 7rem;
+        line-height: 7rem;
+        padding: 0 2rem;
+      }
+      @media (min-width: 80rem) {
+        .large {
+          min-width: 80rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <section>
+      <h1 id="uuid">uuid</h1>
+      <button class="button large" id="rnc" style="">RELOAD AND COPY</button>
+    </section>
+
+    <script type="module">
+      import { v4 as uuidv4 } from "https://jspm.dev/uuid";
+      const h1 = document.querySelector("#uuid");
+      const rnc = document.querySelector("#rnc");
+
+      rnc.onclick = () => {
+        const uuid = uuidv4();
+        h1.innerHTML = uuid;
+        navigator.clipboard.writeText(uuid);
+      };
+      rnc.click();
+    </script>
+  </body>
+</html>
